@@ -1,0 +1,17 @@
+/* SPDX-FileCopyrightText: Copyright (c) 2026 ID8 Engineering AB */
+/* SPDX-License-Identifier: Apache-2.0 */
+
+#include <zephyr/dt-bindings/gpio/gpio.h>
+
+&mikrobus_uart {
+	current-speed = <9600>;
+	status = "okay";
+
+	modbus0: modbus0 {
+		compatible = "zephyr,modbus-serial";
+		/* RS485 Isolator 5 Click: DE=AN, RE=RST */
+		de-gpios = <&mikrobus_header 0 GPIO_ACTIVE_HIGH>;
+		re-gpios = <&mikrobus_header 1 GPIO_ACTIVE_LOW>;
+		status = "okay";
+	};
+};
